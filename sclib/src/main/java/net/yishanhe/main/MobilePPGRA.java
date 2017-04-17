@@ -58,7 +58,8 @@ public class MobilePPGRA {
 //        int[] ys = new int[]{0,1,1,2,3,2,1};
 //        int[] xs = loadData("ClientSequence");
 //        int[] ys = loadData("ServerSequence");
-        int inputLength = 128;
+        //int inputLength = 128;
+        int inputLength = 64;
         System.out.println("*** INPUT LENGTH *** is " + inputLength);
         int[] xs = generateInput(inputLength);
         int[] ys = generateInput(inputLength);
@@ -141,21 +142,27 @@ public class MobilePPGRA {
 
         e_time = System.currentTimeMillis();
         client_time += (System.currentTimeMillis()-s_time);
+        System.out.println("---- client substep measure:"+(System.currentTimeMillis()-s_time));
         s_time = e_time;
 
         extOTR.onReceivePK0s(extOTS.sendPK0s()); // r server
 
         e_time = System.currentTimeMillis();
         server_time += (System.currentTimeMillis()-s_time);
-        s_time = e_time;
+//        s_time = e_time;
 
-        extOTS.onReceiveSeeds(extOTR.sendGRs(), extOTR.sendSeeds());
+        extOTS.onReceiveSeeds(extOTR.sendGRs(), extOTR.sendSeeds()); // this time cost can be amortized, reusing it with a expiring time.
+
+        s_time = System.currentTimeMillis();
+
         extOTS.onReceiveUs(extOTR.sendUs());
 
         e_time = System.currentTimeMillis();
-        client_time += (System.currentTimeMillis()-s_time);
-        s_time = e_time;
+        client_time += (e_time-s_time);
+        System.out.println("---- client onReceiveUs measure:"+(e_time-s_time));
+        s_time = System.currentTimeMillis();
 
+        System.out.println("** STEP 1 ** Time at Client side: " + client_time/1000.0 + " seconds." );
         extOTR.onReceiveQ(extOTS.sendGarbledQ());
 
 
@@ -177,7 +184,6 @@ public class MobilePPGRA {
         s_time = e_time;
 
         // print
-        System.out.println("** STEP 1 ** Time at Client side: " + client_time/1000.0 + " seconds." );
         System.out.println("** STEP 1 ** Time at Server side: " + server_time/1000.0 + " seconds." );
 
         // reset timer
@@ -267,8 +273,8 @@ public class MobilePPGRA {
 
         System.out.println(cipher.decrypt( cipher.add(server.cEncDistMatrix.getItem(xs.length-1, ys.length-1), client.cEncDistMatrix.getItem(xs.length-1, ys.length-1))));
         if (commCost) {
-            System.out.println(bytes_to_client*8/1024.0/1024.0+" MB");
-            System.out.println(bytes_to_server*8/1024.0/1024.0+" MB");
+            System.out.println("client data: " + bytes_to_client*8/1024.0/1024.0+" MB");
+            System.out.println("server data: " + bytes_to_server*8/1024.0/1024.0+" MB");
         }
 
     }

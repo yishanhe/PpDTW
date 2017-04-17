@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name="check09" Subject="1" Speed="fast" Number="9" NumPts="31" Millseconds="283" AppName="Gestures" AppVer="3.5.0.0" Date="Monday, March 05, 2007" TimeOfDay="4:56:42 PM">
+  <Point X="100" Y="177" T="864204" />
+  <Point X="101" Y="179" T="864216" />
+  <Point X="102" Y="181" T="864224" />
+  <Point X="103" Y="183" T="864232" />
+  <Point X="105" Y="186" T="864241" />
+  <Point X="107" Y="190" T="864249" />
+  <Point X="109" Y="194" T="864257" />
+  <Point X="111" Y="196" T="864263" />
+  <Point X="114" Y="200" T="864270" />
+  <Point X="116" Y="204" T="864278" />
+  <Point X="118" Y="206" T="864285" />
+  <Point X="121" Y="209" T="864293" />
+  <Point X="122" Y="213" T="864301" />
+  <Point X="123" Y="215" T="864309" />
+  <Point X="124" Y="217" T="864317" />
+  <Point X="126" Y="220" T="864325" />
+  <Point X="128" Y="220" T="864350" />
+  <Point X="129" Y="217" T="864362" />
+  <Point X="129" Y="211" T="864371" />
+  <Point X="129" Y="206" T="864380" />
+  <Point X="129" Y="198" T="864389" />
+  <Point X="129" Y="185" T="864398" />
+  <Point X="131" Y="174" T="864408" />
+  <Point X="136" Y="160" T="864418" />
+  <Point X="140" Y="150" T="864428" />
+  <Point X="148" Y="138" T="864439" />
+  <Point X="153" Y="131" T="864449" />
+  <Point X="156" Y="128" T="864450" />
+  <Point X="163" Y="120" T="864464" />
+  <Point X="167" Y="116" T="864475" />
+  <Point X="171" Y="110" T="864487" />
+</Gesture>

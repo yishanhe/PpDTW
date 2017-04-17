@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Gesture Name="right_sq_bracket01" Subject="1" Speed="fast" Number="1" NumPts="33" Millseconds="346" AppName="Gestures" AppVer="3.5.0.0" Date="Monday, March 05, 2007" TimeOfDay="4:55:46 PM">
+  <Point X="110" Y="144" T="807795" />
+  <Point X="112" Y="146" T="807819" />
+  <Point X="115" Y="146" T="807828" />
+  <Point X="118" Y="145" T="807836" />
+  <Point X="120" Y="145" T="807842" />
+  <Point X="124" Y="145" T="807849" />
+  <Point X="128" Y="145" T="807857" />
+  <Point X="132" Y="145" T="807865" />
+  <Point X="136" Y="147" T="807873" />
+  <Point X="139" Y="147" T="807880" />
+  <Point X="142" Y="150" T="807888" />
+  <Point X="145" Y="154" T="807896" />
+  <Point X="147" Y="158" T="807905" />
+  <Point X="148" Y="164" T="807914" />
+  <Point X="148" Y="171" T="807923" />
+  <Point X="149" Y="174" T="807924" />
+  <Point X="149" Y="181" T="807936" />
+  <Point X="149" Y="185" T="807937" />
+  <Point X="149" Y="194" T="807946" />
+  <Point X="149" Y="206" T="807957" />
+  <Point X="149" Y="217" T="807969" />
+  <Point X="149" Y="225" T="807980" />
+  <Point X="149" Y="227" T="807991" />
+  <Point X="151" Y="233" T="808002" />
+  <Point X="149" Y="233" T="808048" />
+  <Point X="145" Y="231" T="808059" />
+  <Point X="137" Y="230" T="808071" />
+  <Point X="133" Y="228" T="808073" />
+  <Point X="121" Y="226" T="808087" />
+  <Point X="108" Y="225" T="808100" />
+  <Point X="100" Y="226" T="808114" />
+  <Point X="95" Y="227" T="808128" />
+  <Point X="92" Y="228" T="808141" />
+</Gesture>

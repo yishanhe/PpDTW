@@ -1,21 +1,31 @@
 package net.yishanhe.mobileppdtw;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.Toast;
 
 import net.yishanhe.benchmark.BenchmarkOT;
 import net.yishanhe.benchmark.BenchmarkPaillier;
-import net.yishanhe.main.MobilePPGRA;
+import net.yishanhe.main.MeasureMain;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    private final static String[] PERMISSIONS = {Manifest.permission.READ_EXTERNAL_STORAGE};
+    private final static int REQUEST_PERMISSIONS = 1;
     private Button paillierBtn;
     private Button otBtn;
 
@@ -32,7 +42,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Call sclib on smartphone.", Snackbar.LENGTH_SHORT)
                         .setAction("Action", null).show();
-                MobilePPGRA.main(null);
+//                MobilePPGRA.main(null);
+//                /sdcard/fast/
+                MeasureMain.Run("/sdcard/fast/check01.xml","/sdcard/fast/check01.xml");
+                MeasureMain.Run("/sdcard/fast/check01.xml","/sdcard/fast/circle01.xml");
+                MeasureMain.Run("/sdcard/fast/check01.xml","/sdcard/fast/delete_mark01.xml");
+                MeasureMain.Run("/sdcard/fast/check01.xml","/sdcard/fast/pigtail01.xml");
+                MeasureMain.Run("/sdcard/fast/check01.xml","/sdcard/fast/question_mark01.xml");
+                MeasureMain.Run("/sdcard/fast/check01.xml","/sdcard/fast/rectangle01.xml");
+                MeasureMain.Run("/sdcard/fast/check01.xml","/sdcard/fast/triangle01.xml");
             }
         });
 
@@ -56,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
                 BenchmarkOT.main(null);
             }
         });
+
+        if (!hasPermissions(MainActivity.this, PERMISSIONS)) {
+            ActivityCompat.requestPermissions(MainActivity.this, PERMISSIONS, REQUEST_PERMISSIONS);
+        }
     }
 
     @Override
@@ -78,5 +100,34 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case REQUEST_PERMISSIONS:
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                    recreate();
+                }
+                else {
+                    Toast.makeText(this, "Fail to get permission.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+        }
+    }
+
+    public static boolean hasPermissions(Context context, String[] permissions) {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M && context!=null) {
+            for (String permission :
+                    permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
